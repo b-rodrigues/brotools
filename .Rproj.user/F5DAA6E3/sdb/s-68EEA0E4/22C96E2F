@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Converts column names to upper case for a given list of datasets\n#' @param list_of_loaded_datasets A list of loaded datasets\n#' @return Changes the datasets in place, with column names converted to upper case\n#' @examples\n#' \\donturn{\n#' setwd(\"path/to/datasets/\")\n#' list_of_loaded_datasets <- ls(pattern = \"expr\") # \"expr\" is a character string common to\n#' every data set (for example, suppose all you loaded data sets are of the form *_entrep_*)\n#' updated_list <- all_data_to_upper(list_of_loade_datasets)\n#' }\nall_data_to_upper <- function(list_of_loaded_datasets){\n\tinvisible(lapply(\n\t\tlist_of_loaded_datasets,\n\t\tfunction(x) {colnames(x) <- toupper(colnames(x)); x}))\n\n}\n",
+    "created" : 1469449697181.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2828425404",
+    "id" : "22C96E2F",
+    "lastKnownWriteTime" : 1469449893,
+    "last_content_update" : 1469449893173,
+    "path" : "~/Documents/brunoUtils/R/all_data_to_upper.R",
+    "project_path" : "R/all_data_to_upper.R",
+    "properties" : {
+        "chunk_rendered_width" : "650",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

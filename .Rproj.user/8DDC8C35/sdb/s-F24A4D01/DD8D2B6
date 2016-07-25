@@ -1,0 +1,18 @@
+{
+    "contents" : "all_data_to_upper <- function(list_of_datasets){\n\t\n\tapply(list_of_datasets, function(x) colnames(x) <- toupper(colnames(x)))\n\t\n}",
+    "created" : 1469439291336.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2636302390",
+    "id" : "DD8D2B6",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

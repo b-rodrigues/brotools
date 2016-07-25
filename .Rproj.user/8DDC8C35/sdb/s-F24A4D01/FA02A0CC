@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Reads a list of datasets into the Global environment\n#' @param list_of_datasets A list of datasets (names of datasets are strings)\n#' @param read_func A function, the read function to use to read the data\n#' @return Does not return a value, but reads the datasets into the Global Environment\n#' @examples\n#' \\donturn{\n#' setwd(\"path/to/datasets/\")\n#' list_of_datasets <- list.files(pattern = \"*.csv\")\n#' apply(list_of_datasets, read_and_assgin, read_func = read.csv)\n#' }\nread_list <- function(list_of_datasets, read_func, toUpper = FALSE){\n\n\tread_and_assign <- function(dataset, read_func){\n\t\tassign(\n\t\t\tstrsplit(dataset, \".\", fixed = TRUE)[[1]][1],\n\t\t\tread_func(dataset),\n\t\t\tenvir = .GlobalEnv)\n\n\t\tif (toUpper == TRUE) {\n\t\t\tcolnames(dataset) <- toupper(colnames(dataset))\n\t\t}\n\t}\n\n\t# invisible is used to suppress the unneeded output\n\tinvisible(sapply(list_of_datasets, read_and_assign, read_func = read_func))\n}\n",
+    "created" : 1469437163954.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3282972411",
+    "id" : "FA02A0CC",
+    "lastKnownWriteTime" : 1469449375,
+    "path" : "D:/code/brunoUtils/brunoUtils/R/read_list.R",
+    "project_path" : "R/read_list.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
