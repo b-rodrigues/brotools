@@ -8,7 +8,7 @@
 #' list_of_datasets <- list.files(pattern = "*.csv")
 #' list_of_loaded_datasets <- read_list(list_of_datasets, read_and_assgin, read_func = read.csv)
 #' }
-read_list <- function(list_of_datasets, read_func, toUpper = FALSE){
+read_list <- function(list_of_datasets, read_func){
 
 	read_and_assign <- function(dataset, read_func){
 		assign(

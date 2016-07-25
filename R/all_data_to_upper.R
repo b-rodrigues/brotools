@@ -6,7 +6,7 @@
 #' setwd("path/to/datasets/")
 #' list_of_loaded_datasets <- ls(pattern = "expr") # "expr" is a character string common to
 #' every data set (for example, suppose all you loaded data sets are of the form *_entrep_*)
-#' updated_list <- all_data_to_upper(list_of_loade_datasets)
+#' updated_list <- all_data_to_upper(list_of_loaded_datasets)
 #' }
 all_data_to_upper <- function(list_of_loaded_datasets){
 	invisible(lapply(
