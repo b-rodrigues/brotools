@@ -18,10 +18,10 @@ Does not return a value, but reads the datasets into the Global Environment
 Reads a list of datasets
 }
 \examples{
-\donturn{
+\dontrun{
 setwd("path/to/datasets/")
 list_of_datasets <- list.files(pattern = "*.csv")
-list_of_loaded_datasets <- read_list(list_of_datasets, read_and_assgin, read_func = read.csv)
+list_of_loaded_datasets <- read_list(list_of_datasets, read_func = read.csv)
 }
 }
 

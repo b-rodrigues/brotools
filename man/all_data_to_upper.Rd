@@ -16,7 +16,7 @@ Changes the datasets in place, with column names converted to upper case
 Converts column names to upper case for a given list of datasets
 }
 \examples{
-\donturn{
+\dontrun{
 setwd("path/to/datasets/")
 list_of_loaded_datasets <- ls(pattern = "expr") # "expr" is a character string common to
 every data set (for example, suppose all you loaded data sets are of the form *_entrep_*)
