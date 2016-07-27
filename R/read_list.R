@@ -11,6 +11,8 @@
 #' }
 read_list <- function(list_of_datasets, read_func){
 
+	stopifnot(length(list_of_datasets)>0)
+
 	read_and_assign <- function(dataset, read_func){
 		dataset_name <- as.name(dataset)
 		dataset_name <- read_func(dataset)
