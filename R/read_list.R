@@ -1,7 +1,7 @@
 #' Reads a list of datasets
 #' @param list_of_datasets A list of datasets (names of datasets are strings)
 #' @param read_func A function, the read function to use to read the data
-#' @return Does not return a value, but reads the datasets into the Global Environment
+#' @return Returns a list of the datasets
 #' @export
 #' @examples
 #' \dontrun{
