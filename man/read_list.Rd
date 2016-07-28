@@ -12,7 +12,7 @@ read_list(list_of_datasets, read_func)
 \item{read_func}{A function, the read function to use to read the data}
 }
 \value{
-Does not return a value, but reads the datasets into the Global Environment
+Returns a list of the datasets
 }
 \description{
 Reads a list of datasets
