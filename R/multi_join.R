@@ -3,7 +3,6 @@
 #' functions internally.
 #' Inspired by: http://novicemetrics.blogspot.lu/2011/04/merging-multiple-data-files-into-one.html
 #' @param list_of_loaded_datasets A list of loaded datasets
-#' @param read_func A function, the read function to use to read the data
 #' @param join_func A function, the join function to use to join the data together
 #' @param ... Further parameters to pass to the join function
 #' @return Returns the merged datasets
@@ -18,7 +17,7 @@
 #' If you have a list of lists of datasets, you can merge the lists like this:
 #' lapply(hu, multi_join, read_csv, full_join)
 #' }
-multi_join <- function(list_of_loaded_data, read_func, join_func, ...){
+multi_join <- function(list_of_loaded_data, join_func, ...){
 
 	require("readr")
 	require("dplyr")
