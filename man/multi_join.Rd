@@ -4,11 +4,9 @@
 \alias{multi_join}
 \title{Merges more than two datasets together using `Reduce()`}
 \usage{
-multi_join(list_of_loaded_data, read_func, join_func, ...)
+multi_join(list_of_loaded_data, join_func, ...)
 }
 \arguments{
-\item{read_func}{A function, the read function to use to read the data}
-
 \item{join_func}{A function, the join function to use to join the data together}
 
 \item{...}{Further parameters to pass to the join function}
