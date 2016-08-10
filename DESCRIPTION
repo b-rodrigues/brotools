@@ -12,3 +12,6 @@ Description: This packages contains some functions that should make your life ea
 License: NA
 LazyData: TRUE
 RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
