@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "A collection of useful functions: welcome to the `brunoUtils` package!"
+author: "Bruno Rodrigues"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -9,50 +9,34 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+`brunoUtils` is a package that includes some useful functions to make the life of the DMD at 
+STATEC easier. Here is the list of the included functions:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+* `all_data_to_upper()`
+* `modal_value()`
+* `multi_join()`
+* `read_list()`
 
-## Vignette Info
+### Change the letter case of the column names of a list of datasets to uppercase with `all_data_to_upper()`
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+This function changes the letter case of the column names of the datasets stored in a list to 
+upper case. This is useful for merging datasets with the same column names, but with different 
+letter cases.
 
-## Styles
+### Get the mode a list of number or characters thanks to `modal_value()`
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+As surprising as it may seem, R does not have a function to compute the mode of a list of 
+observations. This function solves this, but the implementation is very basic for now. For example
+in the case of a tie, it only returns the first of the two modes.
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+### Join a list of datasets into one single dataset using `multi_join()`
 
-## Figures
+`multi_join()` solves the problem of merging a lot of datasets together. It takes a list of datasets
+as an input, and outputs a `tibble` (an enhanced version of base R's `data.frames`).
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+### Read a lot of datasets at once easily with `read_list()`
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
+`read_list()` works by giving it a list of datasets in your current working directory and a read
+function, such as `readr::read_csv()` in case you want to read `.csv` files and puts them in a 
+list. You can then use the above functions on this list of datasets.
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
