@@ -1,17 +1,16 @@
-#' Keep only one row per individual
+#' Keep only one row per individual. Only keep the row with the least amount of NA in every column
 #' @param dataframe A `data.frame` object
-#' @param id_var A character object specifying the variable identifying individuals
-#' @param min_na
+#' @param list_var An atomic vector of characters giving the variable combinations to keep
 #' @return A `data.frame` object with only one line per individual
 #' @export
 #' @examples
 #' dataframe <- as.data.frame(list("id" = c(rep(1, 3), rep(2, 4)), "x1" = rnorm(7)))
 #' new_df <- one_row(dataframe, "id")
-one_row <- function(dataframe, id_var, min_na){
+one_row <- function(dataframe, list_var){
   library("dplyr")
   library("purrr")
 
-  stopifnot(is.character(id_var))
+  stopifnot(is.character(list_var))
 
   sum_na <- function(x){
     return(sum(is.na(x)))
@@ -22,10 +21,10 @@ one_row <- function(dataframe, id_var, min_na){
   dataframe %>% by_row(sum_na, .collate = "cols") -> dataframe
 
   dataframe %>%
-    group_by_(id_var) %>%
+    group_by_(list_var) %>%
     filter(.out == min(.out)) %>%
     select(-.out) -> dataframe
 
-  out <- dataframe[!duplicated(dataframe[id_var]), ]
+  out <- dataframe[!duplicated(dataframe[list_var]), ]
   return(out)
 }

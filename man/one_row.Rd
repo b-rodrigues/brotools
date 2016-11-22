@@ -2,20 +2,20 @@
 % Please edit documentation in R/one_row.R
 \name{one_row}
 \alias{one_row}
-\title{Keep only one row per individual}
+\title{Keep only one row per individual. Only keep the row with the least amount of NA in every column}
 \usage{
-one_row(dataframe, id_var)
+one_row(dataframe, list_var)
 }
 \arguments{
 \item{dataframe}{A `data.frame` object}
 
-\item{id_var}{A character object specifying the variable identifying individuals}
+\item{list_var}{An atomic vector of characters giving the variable combinations to keep}
 }
 \value{
 A `data.frame` object with only one line per individual
 }
 \description{
-Keep only one row per individual
+Keep only one row per individual. Only keep the row with the least amount of NA in every column
 }
 \examples{
 dataframe <- as.data.frame(list("id" = c(rep(1, 3), rep(2, 4)), "x1" = rnorm(7)))
