@@ -1,6 +1,6 @@
-Package: brunoUtils
+Package: broTools
 Type: Package
-Title: Some small utilities to make life easier
+Title: Some small tools to make life easier
 Version: 0.1
 Date: 2016-07-25
 Author: Bruno Rodrigues
