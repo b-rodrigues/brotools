@@ -21,8 +21,8 @@ read_list <- function(list_of_datasets, read_func, ...){
 
 	# invisible is used to suppress the unneeded output
 	output <- invisible(
-		sapply(list_of_datasets,
-			   read_and_assign, read_func = read_func, simplify = FALSE, USE.NAMES = TRUE))
+		purrr::map(list_of_datasets,
+			   read_and_assign, read_func = read_func))
 
 	# Remove the ".csv" at the end of the data set names
 	names_of_datasets <- c(unlist(strsplit(list_of_datasets, "[.]"))[c(T, F)])
