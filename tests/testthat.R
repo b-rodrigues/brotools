@@ -1,4 +1,4 @@
 library(testthat)
-library(brunoUtils)
+library(broTools)
 
-test_check("brunoUtils")
+test_check("broTools")

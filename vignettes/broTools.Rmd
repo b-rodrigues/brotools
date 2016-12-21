@@ -1,5 +1,5 @@
 ---
-title: "A collection of useful functions: welcome to the `brunoUtils` package!"
+title: "A collection of useful functions: welcome to the `broTools` package!"
 author: "Bruno Rodrigues"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-`brunoUtils` is a package that includes some useful functions to make the life of the DMD at 
+`broTools` is a package that includes some useful functions to make the life of the DMD at 
 STATEC easier. Here is the list of the included functions:
 
 * `all_data_to_upper()`
