@@ -9,8 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-`broTools` is a package that includes some useful functions to make the life of the DMD at 
-STATEC easier. Here is the list of the included functions:
+`brotools` is a package that includes some useful functions to make my life easier.
+Here is the list of the included functions:
 
 * `all_data_to_upper()`
 * `around()`

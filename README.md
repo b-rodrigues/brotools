@@ -1,6 +1,6 @@
 ### Introduction
 
-`broTools` is a package that includes some useful functions that makes my life easier. Maybe it'll make
+`brotools` is a package that includes some useful functions that makes my life easier. Maybe it'll make
 yours too. Install it with:
 
 ### Installation
@@ -82,7 +82,7 @@ file. So for instance, a `.xlsx` file with four sheets, named `sheet1`, `sheet2`
 `sheet1` and containing the data from `sheet1`, the second element, ... etc. If one loads the data
 into a variable called `workbook`, here is what it looks like:
 
-![](loaded_workbook.jpg)
+![](/vignettes/loaded_workbook.jpg)
 
 ### Make a function work on a list using `to_map()`
 
