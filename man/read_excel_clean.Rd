@@ -17,11 +17,10 @@ A data.frame containing the read Excel file
 \description{
 This is an helper function that simply reads in an Excel file and cleans the names
   of the columns in one step. The user does not need to run this by itself, but it is called by
-  `read_xls_and_sheets()`.
+  `read_workbook()`.
 }
 \examples{
 \dontrun{
 read_excel_clean("my_excel_file.xlsx")
 }
 }
-

@@ -13,9 +13,16 @@ vignette: >
 STATEC easier. Here is the list of the included functions:
 
 * `all_data_to_upper()`
+* `around()`
+* `map_filter()`
 * `modal_value()`
 * `multi_join()`
+* `ni()`
+* `one_row()`
+* `read_excel_clean()`
 * `read_list()`
+* `read_workbook()`
+* `to_map()`
 
 ### Change the letter case of the column names of a list of datasets to uppercase with `all_data_to_upper()`
 
@@ -23,20 +30,46 @@ This function changes the letter case of the column names of the datasets stored
 upper case. This is useful for merging datasets with the same column names, but with different 
 letter cases.
 
+### Is a value *close* to another? Find out with `around()`
+
+This function is useful if you want to test the equality of two values when these values are different
+by a very little `epsilon`.
+
+If x > y - eps and x < y + eps, `around()` returns `TRUE`, if not, `FALSE`.
+
+
+### Filter a dataframe with various conditions with `map_filter()`
+
+`map_filter()` returns a list of data frame objects where each data frame was filtered by one condition.
+
 ### Get the mode a list of number or characters thanks to `modal_value()`
 
-As surprising as it may seem, R does not have a function to compute the mode of a list of 
-observations. This function solves this, but the implementation is very basic for now. For example
-in the case of a tie, it only returns the first of the two modes.
+This is basically a wrapper around `quantile(x, 0.5)`. Might get removed in future versions.
 
 ### Join a list of datasets into one single dataset using `multi_join()`
 
 `multi_join()` solves the problem of merging a lot of datasets together. It takes a list of datasets
 as an input, and outputs a `tibble` (an enhanced version of base R's `data.frames`).
 
-### Check if x is around y with `around()`
+### Check if a value is not in a list with `ni()`
 
-If x > y - eps and x < y + eps, `around()` returns `TRUE`, if not, `FALSE`.
+Returns `TRUE` if x is not in a list.
+
+### Only keep one row per individual with `one_row()`
+
+This function is useful to remove duplicate lines in a dataframe. The user can specify the variables that will be 
+used to check for duplicates in the data frames.
+
+### One helper function `read_excel_clean()` sude by `read_workbook()`
+
+`read_excel_clean()` is a wrapper around `janitor::clean_names(readxl::read_excel())` and is used 
+by `read_workbook()`.
+
+### Read a lot of datasets at once easily with `read_list()`
+
+`read_list()` works by giving it a list of datasets in your current working directory and a read
+function, such as `readr::read_csv()` in case you want to read `.csv` files and puts them in a 
+list. You can then use the above functions on this list of datasets.
 
 ### Read an Excel workbook with `read_workbook()`
 
@@ -50,10 +83,8 @@ into a variable called `workbook`, here is what it looks like:
 
 ![](loaded_workbook.jpg)
 
+### Make a function work on a list using `to_map()`
 
-### Read a lot of datasets at once easily with `read_list()`
-
-`read_list()` works by giving it a list of datasets in your current working directory and a read
-function, such as `readr::read_csv()` in case you want to read `.csv` files and puts them in a 
-list. You can then use the above functions on this list of datasets.
-
+After having read a lot of datasets into a list, `to_map()` allows you to make any function work on 
+this list of datasets. So for example, there is no need to use an anonymous function in `map()` to get the
+summary statistics of each dataframe of the list.

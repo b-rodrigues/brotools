@@ -22,4 +22,3 @@ Returns the mode of a vector
 x <- c(3,3,3,4,5,NA, NA, NA, NA, NA)
 modal_value(x, na.rm = TRUE)
 }
-

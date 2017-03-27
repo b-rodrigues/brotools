@@ -29,4 +29,3 @@ summarymap(list_of_loaded_datasets, "variable")
 purrr::map(list_of_loaded_datasets, (function(x) summary(x$variable)))
 }
 }
-

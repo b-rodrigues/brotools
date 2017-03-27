@@ -32,4 +32,3 @@ If you have a list of lists of datasets, you can merge the lists like this:
 lapply(hu, multi_join, read_csv, full_join)
 }
 }
-

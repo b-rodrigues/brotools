@@ -22,4 +22,3 @@ This reads in an entire Excel workbook into a list of data frames. Each data fra
 excel_workbook <- read_workbook("my_excel_file.xlsx")
 }
 }
-

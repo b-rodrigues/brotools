@@ -20,4 +20,3 @@ True or False
 \examples{
 3 \%ni\% seq(5, 10)
 }
-

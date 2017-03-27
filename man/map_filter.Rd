@@ -23,4 +23,3 @@ Filter a list of conditions
 data(mtcars)
 map_filter(mtcars, "cyl", c(4, 6))
 }
-

@@ -21,4 +21,3 @@ Keep only one row per individual. Only keep the row with the least amount of NA 
 dataframe <- as.data.frame(list("id" = c(rep(1, 3), rep(2, 4)), "x1" = rnorm(7)))
 new_df <- one_row(dataframe, "id")
 }
-

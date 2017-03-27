@@ -4,14 +4,14 @@ Title: Some small tools to make life easier
 Version: 0.1
 Date: 2016-07-25
 Author: Bruno Rodrigues
-Maintainer: Bruno Rodrigues to <bruno.rodrigues@statec.etat.lu>
+Maintainer: Bruno Rodrigues <contact@brodrigues.co>
 Description: This packages contains some functions that should make your life easier. For example,
     you can read hundreds of data sets at once using `read_list()` and create functions that work on
     the resulting list of datasets using `to_map()`. These functions are very specific to my needs,
     but I suppose it could help you out also.
 License: GPL-3
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
     testthat
