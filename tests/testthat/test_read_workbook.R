@@ -1,5 +1,5 @@
 library("testthat")
-library("prepareEUBCS")
+library("brotools")
 
 path_to_workbook <- Sys.glob("*.xlsx")
 

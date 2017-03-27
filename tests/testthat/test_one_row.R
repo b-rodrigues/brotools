@@ -1,10 +1,9 @@
 library("testthat")
-library("broTools")
+library("brotools")
 library("readr")
 library("stringr")
 library("tibble")
 library("dplyr")
-library("prepareMultiprod")
 
 #setwd("inst/tests/")
 

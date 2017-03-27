@@ -1,4 +1,4 @@
 library(testthat)
-library(broTools)
+library(brotools)
 
-test_check("broTools")
+test_check("brotools")
