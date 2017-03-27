@@ -12,6 +12,12 @@ Description: This packages contains some functions that should make your life ea
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
+Imports: dplyr,
+    readxl,
+    janitor,
+    purrr,
+    parallel,
+    doParallel
 Suggests: knitr,
     rmarkdown,
     testthat

@@ -11,7 +11,7 @@
 #' list_of_datasets <- list.files(pattern = "*.csv")
 #' list_of_loaded_datasets <- read_list(list_of_datasets, read_func = read.csv)
 #' }
-read_list <- function(list_of_datasets,  read_func, ..., parallelize = TRUE){
+read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
 
   stopifnot(length(list_of_datasets)>0)
 
