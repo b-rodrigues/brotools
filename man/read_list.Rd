@@ -4,7 +4,7 @@
 \alias{read_list}
 \title{Reads a list of datasets}
 \usage{
-read_list(list_of_datasets, read_func, ...)
+read_list(list_of_datasets, read_func, ..., parallelize = TRUE)
 }
 \arguments{
 \item{list_of_datasets}{A list of datasets (names of datasets are strings)}
@@ -12,6 +12,8 @@ read_list(list_of_datasets, read_func, ...)
 \item{read_func}{A function, the read function to use to read the data}
 
 \item{...}{Further arguments passed to read_func}
+
+\item{parallelize}{Parallelize the code}
 }
 \value{
 Returns a list of the datasets
