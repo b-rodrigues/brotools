@@ -29,7 +29,9 @@ Here is the list of the included functions:
 
 This function changes the letter case of the column names of the datasets stored in a list to 
 upper case. This is useful for merging datasets with the same column names, but with different 
-letter cases.
+letter cases. 
+
+This function will probably get removed in the future, as janitor::clean_names() is much more interesting.
 
 ### Is a value *close* to another? Find out with `around()`
 
@@ -43,9 +45,9 @@ If x > y - eps and x < y + eps, `around()` returns `TRUE`, if not, `FALSE`.
 
 `map_filter()` returns a list of data frame objects where each data frame was filtered by one condition.
 
-### Get the mode a list of number or characters thanks to `modal_value()`
+### Get the mode of a distribution with `modal_value()`
 
-This is basically a wrapper around `quantile(x, 0.5)`. Might get removed in future versions.
+Returns the mode of a distribution.
 
 ### Join a list of datasets into one single dataset using `multi_join()`
 
@@ -61,7 +63,7 @@ Returns `TRUE` if x is not in a list.
 This function is useful to remove duplicate lines in a dataframe. The user can specify the variables that will be 
 used to check for duplicates in the data frames.
 
-### One helper function `read_excel_clean()` sude by `read_workbook()`
+### One helper function `read_excel_clean()` used by `read_workbook()`
 
 `read_excel_clean()` is a wrapper around `janitor::clean_names(readxl::read_excel())` and is used 
 by `read_workbook()`.
@@ -69,7 +71,7 @@ by `read_workbook()`.
 ### Read a lot of datasets at once easily with `read_list()`
 
 `read_list()` works by giving it a list of datasets in your current working directory and a read
-function, such as `readr::read_csv()` in case you want to read `.csv` files and puts them in a 
+function, such as `readr::read_csv()` in case you want to read `.csv` files,and puts them in a 
 list. You can then use the above functions on this list of datasets.
 
 ### Read an Excel workbook with `read_workbook()`
