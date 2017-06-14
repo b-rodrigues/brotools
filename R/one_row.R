@@ -7,8 +7,6 @@
 #' dataframe <- as.data.frame(list("id" = c(rep(1, 3), rep(2, 4)), "x1" = rnorm(7)))
 #' new_df <- one_row(dataframe, "id")
 one_row <- function(dataframe, list_var){
-  library("dplyr")
-  library("purrr")
 
   stopifnot(is.character(list_var))
 
@@ -18,12 +16,12 @@ one_row <- function(dataframe, list_var){
 
   # Count number of NAs by row
 
-  dataframe %>% by_row(sum_na, .collate = "cols") -> dataframe
+  dataframe %>% purrrlyr::by_row(sum_na, .collate = "cols") -> dataframe
 
   dataframe %>%
-    group_by_(list_var) %>%
-    filter(.out == min(.out)) %>%
-    select(-.out) -> dataframe
+    dplyr::group_by_(list_var) %>%
+    dplyr::filter(.out == min(.out)) %>%
+    dplyr::select(-.out) -> dataframe
 
   out <- dataframe[!duplicated(dataframe[list_var]), ]
   return(out)
