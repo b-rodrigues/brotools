@@ -13,10 +13,8 @@ devtools::install_bitbucket("b-rodrigues/brotools")
 
 Here is the list of the included functions:
 
-* `all_data_to_upper()`
 * `around()`
 * `map_filter()`
-* `modal_value()`
 * `multi_join()`
 * `ni()`
 * `one_row()`

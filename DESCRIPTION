@@ -1,8 +1,8 @@
 Package: brotools
 Type: Package
 Title: Some small tools to make life easier
-Version: 0.1
-Date: 2017-06-14
+Version: 0.2
+Date: 2017-09-08
 Author: Bruno Rodrigues
 Maintainer: Bruno Rodrigues <contact@brodrigues.co>
 Description: This packages contains some functions that should make your life easier. For example,

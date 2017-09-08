@@ -2,10 +2,8 @@
 
 export("%ni%")
 export(add_year_column)
-export(all_data_to_upper)
 export(around)
 export(map_filter)
-export(modal_value)
 export(multi_join)
 export(one_row)
 export(read_list)

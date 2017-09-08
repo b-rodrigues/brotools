@@ -13,7 +13,7 @@
 #' }
 read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
 
-  stopifnot(length(list_of_datasets)>0)
+  stopifnot(length(list_of_datasets) > 0)
 
   read_and_assign <- function(dataset, read_func){
     dataset_name <- as.name(dataset)
@@ -39,7 +39,9 @@ read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
   }
 
   # Remove what's after the "." at the end of the data set names and what's before any / for url files.
-  names_of_datasets <- list_of_datasets %>% str_replace_all(".*/|\\..*", "")
+  names_of_datasets <- list_of_datasets %>%
+  	stringr::str_replace_all(".*/|\\..*", "")
+
   names(output) <- names_of_datasets
   return(output)
 }
