@@ -27,6 +27,7 @@ read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
       pbapply::pblapply(list_of_datasets,
                         read_and_assign,
                         read_func = read_func,
+      				  ...,
                         cl = clusters)
     )
     parallel::stopCluster(clusters)

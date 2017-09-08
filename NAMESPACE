@@ -3,6 +3,7 @@
 export("%ni%")
 export(add_year_column)
 export(around)
+export(invert_name)
 export(map_filter)
 export(multi_join)
 export(one_row)
