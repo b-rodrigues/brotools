@@ -12,7 +12,8 @@ Description: This packages contains some functions that should make your life ea
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
-Imports: dplyr,
+Imports: 
+    dplyr,
     readxl,
     stringr,
     janitor,
@@ -20,7 +21,8 @@ Imports: dplyr,
     parallel,
     doParallel,
     pbapply,
-    purrrlyr
+    purrrlyr,
+    magrittr
 Suggests: knitr,
     rmarkdown,
     testthat

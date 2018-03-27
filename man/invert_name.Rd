@@ -4,12 +4,19 @@
 \alias{invert_name}
 \title{Inverts a surname name to name surname (or vice versa)}
 \usage{
-invert_name(name, to_title = F)
+invert_name(name, sep = " ", position = 1, to_title = FALSE,
+  out_sep = " ")
 }
 \arguments{
-\item{name}{The name to invert}
+\item{name}{The name to invert.}
+
+\item{sep}{The separator of the name.}
+
+\item{position}{Integer separating the given name from the last name.}
 
 \item{to_title}{Should the result be converted to title? (John Doe instead of john doe)}
+
+\item{out_sep}{The separator for the output.}
 }
 \value{
 A string with the surname and name inverted
@@ -20,5 +27,8 @@ Inverts a surname name to name surname (or vice versa)
 \examples{
 name <- "RODRIGUES BRUNO"
 invert_name(name)
-invert_name(name, to_title = T)
+invert_name(name, to_title = TRUE)
+invert_name("Bruno.Rodrigues", sep = "\\\\.")
+invert_name("Bruno.Rodrigues", sep = "\\\\.", out_sep = " ")
+invert_name("John Middlename Doe", sep = " ", position = 2)
 }

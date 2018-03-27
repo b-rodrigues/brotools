@@ -7,16 +7,20 @@
 #' @examples
 #' data(mtcars)
 #' map_filter(mtcars, "cyl", c(4, 6))
-map_filter <- function(dataset, variable, list_values){
+map_filter <- function(dataset, variable, list_values, rbind = FALSE){
+  variable <- rlang::enquo(variable)
 
   for_one_dataset <- function(dataset, variable, value){
-    filter_criteria <- lazyeval::interp(~y == x, .values=list(y = as.name(variable), x =  value))
     dataset %>%
-      dplyr::filter_(filter_criteria) -> out
-    return(out)
+      filter(rlang::UQ(variable) == value)
+    }
+
+  if (rbind) {
+  	mapfun <- purrr::map_df
+  } else {
+  	mapfun <- purrr::map
   }
 
-  out <- purrr::map(list_values, for_one_dataset, dataset = dataset, variable = variable)
+  mapfun(list_values, for_one_dataset, dataset = dataset, variable = variable)
 
-  return(out)
 }

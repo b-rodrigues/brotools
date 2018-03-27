@@ -11,7 +11,7 @@
 #' list_of_datasets <- list.files(pattern = "*.csv")
 #' list_of_loaded_datasets <- read_list(list_of_datasets, read_func = read.csv)
 #' }
-read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
+read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE, rbind = FALSE){
 
   stopifnot(length(list_of_datasets) > 0)
 
@@ -19,33 +19,41 @@ read_list <- function(list_of_datasets,  read_func, ..., parallelize = FALSE){
     dataset_name <- as.name(dataset)
     dataset_name <- read_func(dataset, ...)
   }
-  if (parallelize == TRUE) {
+
+  if (parallelize) {
+    message("Reading in data in parallel")
     clusters <- parallel::detectCores() %>%
       parallel::makeCluster()
+
     doParallel::registerDoParallel(clusters)
-    output <- invisible(
+
+    output <- invisible( # invisible is used to suppress the unneeded output
       pbapply::pblapply(list_of_datasets,
                         read_and_assign,
                         read_func = read_func,
-      				  ...,
+                        ...,
                         cl = clusters)
     )
+
     parallel::stopCluster(clusters)
-  } else if (parallelize == FALSE) {
-    # invisible is used to suppress the unneeded output
+
+  } else if (!parallelize) {
     output <- invisible(
       pbapply::pblapply(list_of_datasets,
                         read_and_assign,
-                        read_func = read_func))
+                        read_func = read_func)
+    )
   }
 
   # Remove what's after the "." at the end of the data set names and what's before any / for url files.
   names_of_datasets <- list_of_datasets %>%
-  	stringr::str_replace_all(".*/|\\..*", "")
+    stringr::str_replace_all(".*/|\\..*", "")
 
   names(output) <- names_of_datasets
-  return(output)
+
+  if (rbind) {
+    dplyr::bind_rows(output)
+  } else {
+    output
+  }
 }
-
-
-

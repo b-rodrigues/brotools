@@ -4,7 +4,8 @@
 \alias{read_list}
 \title{Reads a list of datasets}
 \usage{
-read_list(list_of_datasets, read_func, ..., parallelize = FALSE)
+read_list(list_of_datasets, read_func, ..., parallelize = FALSE,
+  rbind = FALSE)
 }
 \arguments{
 \item{list_of_datasets}{A list of datasets (names of datasets are strings)}
