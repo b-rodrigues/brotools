@@ -4,7 +4,7 @@
 \alias{map_filter}
 \title{Filter a list of conditions}
 \usage{
-map_filter(dataset, variable, list_values)
+map_filter(dataset, variable, list_values, rbind = FALSE)
 }
 \arguments{
 \item{dataset}{A `data.frame` object}
