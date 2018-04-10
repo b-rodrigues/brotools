@@ -3,6 +3,7 @@
 #' @param ... Optional. Columns in the data frame
 #' @return A data frame with descriptive statistics. If you are only interested in certain columns
 #' you can add these columns.
+#' @import dplyr
 #' @export
 #' @examples
 #' \dontrun{
