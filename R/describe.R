@@ -4,7 +4,6 @@
 #' @return A data frame with descriptive statistics. If you are only interested in certain columns
 #' you can add these columns.
 #' @import dplyr
-#' @import tidyr
 #' @importFrom magrittr "%>%"
 #' @export
 #' @examples
@@ -21,7 +20,7 @@ describe <- function(df, ...){
   describe_numeric <- function(df){
     df %>%
       select_if(is.numeric) %>%
-      gather(variable, value) %>%
+      tidyr::gather(variable, value) %>%
       group_by(variable) %>%
       summarise_all(funs(mean = mean(value, na.rm = TRUE),
                          sd = sd(value, na.rm = TRUE),
@@ -31,18 +30,17 @@ describe <- function(df, ...){
                          median = quantile(value, 0.5, na.rm = TRUE),
                          q75 = quantile(value, 0.75, na.rm = TRUE),
                          n_missing = sum(is.na(value)))) %>%
-      mutate(type = "Numeric") %>%
-      select(variable, type, everything())
+      mutate(type = "Numeric")
   }
 
   describe_character_or_factors <- function(df, type){
     df %>%
-      gather(variable, value) %>%
+      tidyr::gather(variable, value) %>%
       group_by(variable) %>%
-      summarise_all(funs(n_missing = sum(is.na(value)),
+      summarise_all(funs(mode = sample_mode(value),
+                         n_missing = sum(is.na(value)),
                          n_unique = length(unique(value)))) %>%
-      mutate(type = type) %>%
-      select(variable, type, everything())
+      mutate(type = type)
   }
 
   describe_character <- function(df){
@@ -60,12 +58,11 @@ describe <- function(df, ...){
   describe_list <- function(df){
     df %>%
       select_if(is.list) %>%
-      gather(variable, value) %>%
+      tidyr::gather(variable, value) %>%
       group_by(variable) %>%
       summarise_all(funs(n_missing = sum(is.na(unique(unlist(value)))),
                          n_unique = length(unique(unlist(value))))) %>%
-      mutate(type = "List") %>%
-      select(variable, type, everything())
+      mutate(type = "List")
   }
 
   possibly_describe_numeric <- purrr::possibly(describe_numeric, otherwise = empty_frame)
@@ -79,6 +76,7 @@ describe <- function(df, ...){
   df_list <- possibly_describe_list(df)
 
   list(df_numeric, df_character, df_factor, df_list) %>%
-    dplyr::bind_rows()
+    dplyr::bind_rows() %>%
+    select(variable, type, mean, sd, mode, min, max, q25, median, q75, n_missing, n_unique)
 
 }
