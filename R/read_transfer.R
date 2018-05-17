@@ -12,7 +12,7 @@
 #' read_transfer("mtcars.dat", "mtcars.stsd")
 #' }
 read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-						  encoding = "unknown", skipNul = FALSE, sep = ",", ...){
+              encoding = "unknown", skipNul = FALSE, sep = ",", ...){
 
   dat_file <- data.table::fread(file = dat, sep = sep, ...)
 
@@ -30,9 +30,14 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
   variable_types <- stringr::str_extract(meta_data, "\\(.*\\)") %>%
     purrr::discard(is.na)
 
+  date_formats <- variable_types %>%
+    str_extract(".*%.*") %>%
+    str_remove_all("\\(|\\)")
+
   variable_types <- variable_types %>%
     stringr::str_replace_all(".*A.*", "character") %>%
-    stringr::str_replace_all(".*F.*", "numeric")
+    stringr::str_replace_all(".*F.*", "numeric") %>%
+    stringr::str_replace_all(".*%.*", "POSIXct")
 
   variables_start <- which(variable_names == "VARIABLES") + 1
 
@@ -42,14 +47,23 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
 
   dat_file[dat_file == "?"] <- NA
 
-  set_col_type <- function(column, type){
+  set_col_type <- function(column, type, date_format = NA){
     if(type == "character"){
       as.character(column)
     } else if (type == "numeric"){
       as.numeric(column)
+    } else if (type == "POSIXct"){
+      as.POSIXct(strptime(column, date_format))
     }
   }
 
-  purrr::map2_df(dat_file, variable_types, set_col_type)
-
+  if(all(is.na(date_formats))){
+    purrr::map2_df(dat_file, variable_types, set_col_type)
+  } else {
+    purrr::pmap_df(
+      list(
+        dat_file, variable_types, date_formats
+      ),
+      set_col_type)
+  }
 }

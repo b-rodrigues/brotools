@@ -4,6 +4,11 @@
 #' @param parallelize Parallelize the code
 #' @param ... Further arguments passed to read_func
 #' @return Returns a list of the datasets
+#' @importFrom parallel detectCores makeCluster
+#' @importFrom pbapply pblapply
+#' @importFrom doParallel registerDoParallel
+#' @importFrom stringr str_replace_all
+#' @importFrom dplyr bind_rows
 #' @export
 #' @examples
 #' \dontrun{
