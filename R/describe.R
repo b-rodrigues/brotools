@@ -6,8 +6,6 @@
 #' @import dplyr
 #' @importFrom magrittr "%>%"
 #' @importFrom tidyr gather
-#' @importFrom stats mean sd min max quantile
-#' @importFrom base sum
 #' @export
 #' @examples
 #' \dontrun{
@@ -27,9 +25,11 @@ describe <- function(df, ...){
       group_by(variable) %>%
       summarise_all(funs(mean = mean(value, na.rm = TRUE),
                          sd = sd(value, na.rm = TRUE),
+      				     nobs = length(value),
                          min = min(value, na.rm = TRUE),
                          max = max(value, na.rm = TRUE),
                          q25 = quantile(value, 0.25, na.rm = TRUE),
+      				     mode = as.character(brotools::sample_mode(value)),
                          median = quantile(value, 0.5, na.rm = TRUE),
                          q75 = quantile(value, 0.75, na.rm = TRUE),
                          n_missing = sum(is.na(value)))) %>%
@@ -40,7 +40,8 @@ describe <- function(df, ...){
     df %>%
       tidyr::gather(variable, value) %>%
       group_by(variable) %>%
-      summarise_all(funs(mode = sample_mode(value),
+      summarise_all(funs(mode = brotools::sample_mode(value),
+      				     nobs = length(value),
                          n_missing = sum(is.na(value)),
                          n_unique = length(unique(value)))) %>%
       mutate(type = type)
@@ -64,6 +65,8 @@ describe <- function(df, ...){
       tidyr::gather(variable, value) %>%
       group_by(variable) %>%
       summarise_all(funs(n_missing = sum(is.na(unique(unlist(value)))),
+      				     mode = NA,
+      				     nobs = length(unlist(value)),
                          n_unique = length(unique(unlist(value))))) %>%
       mutate(type = "List")
   }
@@ -80,6 +83,6 @@ describe <- function(df, ...){
 
   list(df_numeric, df_character, df_factor, df_list) %>%
     dplyr::bind_rows() %>%
-    select(variable, type, mean, sd, mode, min, max, q25, median, q75, n_missing, n_unique)
+    select(variable, type, nobs, mean, sd, mode, min, max, q25, median, q75, n_missing, n_unique)
 
 }

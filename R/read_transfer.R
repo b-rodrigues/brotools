@@ -14,9 +14,9 @@
 read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
 						  encoding = "unknown", skipNul = FALSE, sep = ",", ...){
 
-  dat_file <- data.table::fread(dat, sep, ...)
+  dat_file <- data.table::fread(file = dat, sep = sep, ...)
 
-  meta_data <- readLines(con = stsd, n, ok, warn, encoding, skipNul)
+  meta_data <- readLines(con = stsd, n = n, ok = ok, warn = warn, encoding = encoding, skipNul = skipNul)
 
   meta_data_end <- which(meta_data == "VALUE LABELS")
 
