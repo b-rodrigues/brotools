@@ -18,6 +18,10 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
   meta_data <- readLines(con = stsd, n = -1L, ok = TRUE, warn = TRUE,
   					   encoding = "unknown", skipNul = FALSE)
 
+  meta_data_end <- which(meta_data == "VALUE LABELS")
+
+  meta_data <- meta_data[1:(end - 1)]
+
   variable_names <- str_extract(meta_data, "\\b(\\w+)\\b") %>%
     discard(is.na)
 

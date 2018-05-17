@@ -1,0 +1,26 @@
+ENCODING CP1252
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE C:/Users/zjx742/Desktop/demo4.dat
+
+FORMAT delimited commas
+VARIABLES
+   une_date       	   1	 (%m/%d/%Y)
+   une_autre_date 	   2	 (A10)
+   une_autre_date2	   3	 (A8)
+   maintenant     	   4	 (%m/%d/%Y %H:%M:%S)
+   maint          	   5	 (A19)
+   nombre         	   6	 (F2)
+   truc           	   7	 (F1)
+   sexe           	   8	 (F1)
+   sexe2          	   9	 (A1)
+   sexe3          	   10	 (F1)	\sexe3
+
+VALUE LABELS
+  \sexe3
+     1 "1"
+     2 "2"
+
+
+
