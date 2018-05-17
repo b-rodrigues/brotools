@@ -5,7 +5,7 @@
 \title{Imports data from StatTransfer}
 \usage{
 read_transfer(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-  encoding = "unknown", skipNul = FALSE, ...)
+  encoding = "unknown", skipNul = FALSE, sep = ",", ...)
 }
 \arguments{
 \item{dat}{The file containing the data, in the .dat format}

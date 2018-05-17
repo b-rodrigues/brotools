@@ -5,32 +5,34 @@
 #' @return A data frame
 #' @export
 #' @importFrom stringr str_replace_all str_extract
-#' @importFrom purrr map2_df
+#' @importFrom data.table fread
+#' @importFrom purrr discard map2_df is_empty
 #' @examples
 #' \dontrun{
 #' read_transfer("mtcars.dat", "mtcars.stsd")
 #' }
 read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-						  encoding = "unknown", skipNul = FALSE, ...){
+						  encoding = "unknown", skipNul = FALSE, sep = ",", ...){
 
-  dat_file <- read.table(dat, ...)
+  dat_file <- data.table::fread(dat, sep, ...)
 
-  meta_data <- readLines(con = stsd, n = -1L, ok = TRUE, warn = TRUE,
-  					   encoding = "unknown", skipNul = FALSE)
+  meta_data <- readLines(con = stsd, n, ok, warn, encoding, skipNul)
 
   meta_data_end <- which(meta_data == "VALUE LABELS")
 
-  meta_data <- meta_data[1:(end - 1)]
+  meta_data_end <- ifelse(purrr::is_empty(meta_data_end), length(meta_data), meta_data_end)
 
-  variable_names <- str_extract(meta_data, "\\b(\\w+)\\b") %>%
-    discard(is.na)
+  meta_data <- meta_data[1:(meta_data_end - 1)]
 
-  variable_types <- str_extract(meta_data, "\\(.*\\)") %>%
-    discard(is.na)
+  variable_names <- stringr::str_extract(meta_data, "\\b(\\w+)\\b") %>%
+    purrr::discard(is.na)
+
+  variable_types <- stringr::str_extract(meta_data, "\\(.*\\)") %>%
+    purrr::discard(is.na)
 
   variable_types <- variable_types %>%
-    str_replace_all(".*A.*", "character") %>%
-    str_replace_all(".*F.*", "numeric")
+    stringr::str_replace_all(".*A.*", "character") %>%
+    stringr::str_replace_all(".*F.*", "numeric")
 
   variables_start <- which(variable_names == "VARIABLES") + 1
 
@@ -47,6 +49,7 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
       as.numeric(column)
     }
   }
-  map2_df(dat_file, variable_types, set_col_type)
+
+  purrr::map2_df(dat_file, variable_types, set_col_type)
 
 }

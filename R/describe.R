@@ -5,6 +5,9 @@
 #' you can add these columns.
 #' @import dplyr
 #' @importFrom magrittr "%>%"
+#' @importFrom tidyr gather
+#' @importFrom stats mean sd min max quantile
+#' @importFrom base sum
 #' @export
 #' @examples
 #' \dontrun{
