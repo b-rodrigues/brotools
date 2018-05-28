@@ -4,7 +4,7 @@
 #' @param ... Further options passed down to methods
 #' @return A data frame
 #' @export
-#' @importFrom stringr str_replace_all str_extract
+#' @importFrom stringr str_replace_all str_extract str_remove_all
 #' @importFrom data.table fread
 #' @importFrom purrr discard map2_df is_empty
 #' @examples
@@ -31,8 +31,8 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
     purrr::discard(is.na)
 
   date_formats <- variable_types %>%
-    str_extract(".*%.*") %>%
-    str_remove_all("\\(|\\)")
+    stringr::str_extract(".*%.*") %>%
+    stringr::str_remove_all("\\(|\\)")
 
   variable_types <- variable_types %>%
     stringr::str_replace_all(".*A.*", "character") %>%
