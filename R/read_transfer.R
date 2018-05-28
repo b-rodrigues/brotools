@@ -7,14 +7,15 @@
 #' @importFrom stringr str_replace_all str_extract str_remove_all
 #' @importFrom data.table fread
 #' @importFrom purrr discard map2_df is_empty
+#' @importFrom lubridate parse_date_time
 #' @examples
 #' \dontrun{
 #' read_transfer("mtcars.dat", "mtcars.stsd")
 #' }
 read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-              encoding = "unknown", skipNul = FALSE, sep = ",", ...){
+              encoding = "unknown", skipNul = FALSE, sep = ",", locale = Sys.getlocale("LC_TIME"), ...){
 
-  dat_file <- data.table::fread(file = dat, sep = sep, ...)
+  dat_file <- data.table::fread(file = dat, sep = sep, encoding = encoding, ...)
 
   meta_data <- readLines(con = stsd, n = n, ok = ok, warn = warn, encoding = encoding, skipNul = skipNul)
 
@@ -47,13 +48,14 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
 
   dat_file[dat_file == "?"] <- NA
 
-  set_col_type <- function(column, type, date_format = NA){
+
+  set_col_type <- function(column, type, date_format = NA, locale = locale){
     if(type == "character"){
       as.character(column)
     } else if (type == "numeric"){
       as.numeric(column)
     } else if (type == "POSIXct"){
-      as.POSIXct(strptime(column, date_format))
+      as.POSIXct(lubridate::parse_date_time(x = column, orders = date_format, locale = locale))
     }
   }
 
@@ -62,8 +64,8 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
   } else {
     purrr::pmap_df(
       list(
-        dat_file, variable_types, date_formats
+        column = dat_file, type = variable_types, date_format = date_formats
       ),
-      set_col_type)
+      set_col_type, locale = locale)
   }
 }

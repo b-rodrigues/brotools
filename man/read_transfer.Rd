@@ -5,7 +5,8 @@
 \title{Imports data from StatTransfer}
 \usage{
 read_transfer(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-  encoding = "unknown", skipNul = FALSE, sep = ",", ...)
+  encoding = "unknown", skipNul = FALSE, sep = ",",
+  locale = Sys.getlocale("LC_TIME"), ...)
 }
 \arguments{
 \item{dat}{The file containing the data, in the .dat format}

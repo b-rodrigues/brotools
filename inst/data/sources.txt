@@ -1,0 +1,9 @@
+https://datamarket.com/data/license/0/default-open-license.html
+
+https://datamarket.com/data/set/22pw/monthly-lake-erie-levels-1921-1970#!ds=22pw&display=line
+
+https://datamarket.com/data/set/22ky/monthly-total-number-of-pigs-slaughtered-in-victoria-jan-1980-august-1995#!ds=22ky&display=line
+
+https://datamarket.com/data/set/22my/quarterly-australian-national-accounts-exports-millions-of-dollars-at-198990-prices-sep-59-jun-95#!ds=22my&display=line
+
+https://stats.idre.ucla.edu/stata/dae/ordered-logistic-regression/

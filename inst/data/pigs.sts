@@ -1,0 +1,11 @@
+ENCODING CP1252
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE C:/Users/zjx742/Desktop/data/pigs.dat
+
+FORMAT delimited commas
+VARIABLES
+   date           	   1	 (%Y-%m-%d)
+   pigs           	   2	 (F6)
+
