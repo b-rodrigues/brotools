@@ -12,7 +12,7 @@
 #' \dontrun{
 #' read_transfer("mtcars.dat", "mtcars.stsd")
 #' }
-read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
+read_transfer <- function(dat, stsd, labels = FALSE, n = -1L, ok = TRUE, warn = TRUE,
               encoding = "unknown", skipNul = FALSE, sep = ",", locale = Sys.getlocale("LC_TIME"), ...){
 
   dat_file <- data.table::fread(file = dat, sep = sep, encoding = encoding, ...)
@@ -57,6 +57,24 @@ read_transfer <- function(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
     } else if (type == "POSIXct"){
       as.POSIXct(lubridate::parse_date_time(x = column, orders = date_format, locale = locale))
     }
+  }
+
+  if (labels) {
+  	labels_start <- which(meta_data == "VALUE LABELS")
+
+  	labels_data <- meta_data[(labels_start + 1):length(meta_data)] %>%
+  		stringr::str_trim()
+
+  	variable_label_names <- stringr::str_extract(meta_data, "(?<=\\)\t).*") %>%
+  		purrr::discard(is.na)
+
+  	labels <- stringr::str_extract_all(labels_data, '\\".*\\"', simplify = TRUE) %>%
+  		stringr::str_remove_all('\\"')
+
+  	values <- stringr::str_extract_all(labels_data, '\\d+', simplify = TRUE)
+
+  	val_labels <- cbind(values, labels)
+
   }
 
   if(all(is.na(date_formats))){

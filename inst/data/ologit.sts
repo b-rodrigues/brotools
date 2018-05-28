@@ -7,8 +7,8 @@ FILE C:/Users/zjx742/Desktop/data/ologit.dat
 FORMAT delimited commas
 VARIABLES
    apply          	   1	 (F1)	\apply
-   pared          	   2	 (F1)
-   public         	   3	 (F1)
+   pared          	   2	 (F1)	\paredl
+   public         	   3	 (F1)	\publicl
    gpa            	   4	 (F16)
 
 VALUE LABELS
@@ -16,6 +16,14 @@ VALUE LABELS
      0 "unlikely"
      1 "somewhat likely"
      2 "very likely"
+
+  \paredl
+     0 "no"
+     1 "yes"
+
+  \publicl
+     0 "no"
+     1 "yes"
 
 
 
