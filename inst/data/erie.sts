@@ -1,0 +1,11 @@
+ENCODING CP1252
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE C:/Users/zjx742/Desktop/data/monthly-lake-erie-levels-1921-19.dat
+
+FORMAT delimited commas
+VARIABLES
+   Month          	   1	 (%Y-%B-%d)
+   Level          	   2	 (F6)
+
