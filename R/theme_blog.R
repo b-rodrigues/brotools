@@ -15,7 +15,7 @@ theme_blog <- function(){
 #' fill scale that works well with blog
 #' @export
 scale_fill_blog <- function(){
-  scale_fill_manual(values = c("#82518c", "#002b36", "#5160a0",
+  scale_fill_manual(values = c("#82518c", "#0f4150", "#5160a0",
                  "#88720e", "#bec3b8", "#8c6451",
                  "#5b8c51", "#880e61", "#0e2488",
                  "#880e20", "#d33682", "#0e8876"))
@@ -24,7 +24,7 @@ scale_fill_blog <- function(){
 #' color scale that works well with blog
 #' @export
 scale_color_blog <- function(){
-  scale_color_manual(values = c("#82518c", "#002b36", "#5160a0",
+  scale_color_manual(values = c("#82518c", "#0f4150", "#5160a0", #old nice, color too #002b36, but a bit dark
                  "#88720e", "#bec3b8", "#8c6451",
                  "#5b8c51", "#880e61", "#0e2488",
                  "#880e20", "#d33682", "#0e8876"))
