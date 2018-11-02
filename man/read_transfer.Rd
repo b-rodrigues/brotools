@@ -4,8 +4,8 @@
 \alias{read_transfer}
 \title{Imports data from StatTransfer}
 \usage{
-read_transfer(dat, stsd, n = -1L, ok = TRUE, warn = TRUE,
-  encoding = "unknown", skipNul = FALSE, sep = ",",
+read_transfer(dat, stsd, labels = FALSE, n = -1L, ok = TRUE,
+  warn = TRUE, encoding = "unknown", skipNul = FALSE, sep = ",",
   locale = Sys.getlocale("LC_TIME"), ...)
 }
 \arguments{
