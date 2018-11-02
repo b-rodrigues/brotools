@@ -12,7 +12,7 @@ theme_blog <- function(){
         axis.title = element_text(colour = "white"))
 }
 
-#' color scale that works well with blog
+#' fill scale that works well with blog
 #' @export
 scale_fill_blog <- function(){
   scale_fill_manual(values = c("#82518c", "#002b36", "#5160a0",
@@ -32,6 +32,6 @@ scale_color_blog <- function(){
 
 #' continuous scale that works well with blog
 #' @export
-scale_color_blog <- function(){
+scale_color_cont_blog <- function(){
 	scale_color_gradient(low = "#bec3b8", high = "#ad2c6c")
 }

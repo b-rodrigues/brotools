@@ -2,10 +2,10 @@
 % Please edit documentation in R/theme_blog.R
 \name{scale_fill_blog}
 \alias{scale_fill_blog}
-\title{color scale that works well with blog}
+\title{fill scale that works well with blog}
 \usage{
 scale_fill_blog()
 }
 \description{
-color scale that works well with blog
+fill scale that works well with blog
 }
