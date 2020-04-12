@@ -1,0 +1,24 @@
+ENCODING UTF-8
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE /home/cbrunos/Documents/brotools/inst/data/storms_fixed_format.dat
+
+
+
+VARIABLES
+   name            1-9   (A)
+   year            10-13 
+   month           14-15 
+   day             16-17 
+   hour            18-19 
+   lat             20-23 
+   long            24-29 
+   status          30-48  (A)
+   category        49-50 
+   wind            51-53 
+   pressure        54-57 
+   ts_diameter     58-72  (A)
+   hu_diameter     73-87  (A)
+   storm_date      88-97  (A)
+

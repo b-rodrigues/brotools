@@ -1,0 +1,19 @@
+ENCODING UTF-8
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE /home/cbrunos/Documents/brotools/inst/data/gss_cat_fixed_format.dat
+
+
+
+VARIABLES
+   year            1-4  
+   marital         5-17  (A)
+   age             18-19  (A)
+   race            20-24  (A)
+   rincome         25-38  (A)
+   partyid         39-56  (A)
+   relig           57-79  (A)
+   denom           80-99  (A)
+   tvhours         100-101 (A)
+
