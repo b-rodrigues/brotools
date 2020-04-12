@@ -1,0 +1,21 @@
+ENCODING UTF-8
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE /home/cbrunos/mtcars.dat
+
+FORMAT delimited commas
+
+VARIABLES
+   mpg            	   1	 (F4)
+   cyl            	   2	 (F1)
+   disp           	   3	 (F5)
+   hp             	   4	 (F3)
+   drat           	   5	 (F4)
+   wt             	   6	 (F5)
+   qsec           	   7	 (F5)
+   vs             	   8	 (F1)
+   am             	   9	 (F1)
+   gear           	   10	 (F1)
+   carb           	   11	 (F1)
+

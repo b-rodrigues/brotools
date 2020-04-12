@@ -1,0 +1,19 @@
+ENCODING UTF-8
+
+// The following line should contain the complete path and name of your raw data file
+
+FILE /home/cbrunos/gss_cat.dat
+
+FORMAT delimited commas
+
+VARIABLES
+   year           	   1	 (F4)
+   marital        	   2	 (A13)
+   age            	   3	 (A2)
+   race           	   4	 (A5)
+   rincome        	   5	 (A14)
+   partyid        	   6	 (A18)
+   relig          	   7	 (A23)
+   denom          	   8	 (A20)
+   tvhours        	   9	 (A2)
+
